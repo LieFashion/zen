@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1A1A1A"><title>Admin — ZEN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <section class="login-panel" id="loginPanel">
+      <a class="brand login-brand" href="index.html"><img src="assets/logo.png" alt="" onerror="this.style.display='none'"><span>ZEN</span></a>
+      <p class="eyebrow">BORN OF SUN · CONTROL ROOM</p><h1>Selamat<br><em>datang kembali.</em></h1>
+      <p class="muted">Masuk untuk mengelola produk, galeri, dan informasi ZEN.</p>
+      <form id="loginForm" class="admin-form">
+        <label>Email<input type="email" id="loginEmail" autocomplete="username" required placeholder="admin@email.com"></label>
+        <label>Password<input type="password" id="loginPassword" autocomplete="current-password" required placeholder="Password"></label>
+        <button class="button button-dark full" type="submit">Masuk ke dashboard ↗</button>
+        <p class="form-message" id="loginMessage" role="status"></p>
+      </form>
+      <a class="back-link" href="index.html">← Kembali ke website publik</a>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <aside class="admin-sidebar">
+        <a class="brand" href="index.html"><img src="assets/logo.png" alt="" onerror="this.style.display='none'"><span>ZEN</span></a>
+        <p class="sidebar-label">WORKSPACE</p>
+        <button class="side-link active" data-tab="products">▦ <span>Produk</span></button>
+        <button class="side-link" data-tab="gallery">▧ <span>Galeri</span></button>
+        <button class="side-link" data-tab="contacts">◎ <span>Kontak</span></button>
+        <button class="side-link" data-tab="settings">⚙ <span>Pengaturan</span></button>
+        <div class="sidebar-bottom"><span id="adminEmail"></span><button id="logoutBtn" class="logout-btn">Keluar ↗</button><a href="index.html" class="back-link">Lihat website ↗</a></div>
+      </aside>
+      <section class="admin-main">
+        <div class="admin-topbar"><div><p class="eyebrow">ZEN / MANAGEMENT</p><h1 id="tabTitle">Produk</h1></div><span class="status-pill">● Terhubung</span></div>
+        <div id="adminNotice" class="notice hidden"></div>
+
+        <section class="tab-panel" id="tab-products">
+          <div class="panel-heading"><div><h2>Daftar produk</h2><p>Produk yang aktif akan tampil di halaman publik.</p></div><button class="button button-orange" id="addProductBtn">＋ Tambah produk</button></div>
+          <div class="admin-list" id="productsList"></div>
+        </section>
+        <section class="tab-panel hidden" id="tab-gallery">
+          <div class="panel-heading"><div><h2>Galeri foto & video</h2><p>Tambahkan media menggunakan tautan yang dapat diakses publik.</p></div><button class="button button-orange" id="addMediaBtn">＋ Tambah media</button></div>
+          <div class="admin-list" id="mediaList"></div>
+        </section>
+        <section class="tab-panel hidden" id="tab-contacts">
+          <div class="panel-heading"><div><h2>Kontak & pemesanan</h2><p>Kontak aktif menjadi tujuan tombol order produk.</p></div><button class="button button-orange" id="addContactBtn">＋ Tambah kontak</button></div>
+          <div class="admin-list" id="contactsList"></div>
+        </section>
+        <section class="tab-panel hidden" id="tab-settings">
+          <div class="panel-heading"><div><h2>Pengaturan tampilan</h2><p>Atur teks utama halaman publik.</p></div></div>
+          <form id="settingsForm" class="editor-card">
+            <label>Deskripsi hero<textarea id="settingHero" rows="3"></textarea></label>
+            <label>Instagram utama (opsional)<input id="settingInstagram" type="url" placeholder="https://instagram.com/nam akun"></label>
+            <button class="button button-dark" type="submit">Simpan pengaturan</button>
+          </form>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="editorDialog" class="editor-dialog">
+    <form id="editorForm" class="editor-card">
+      <div class="dialog-heading"><div><p class="eyebrow">ZEN / CONTENT</p><h2 id="dialogTitle">Tambah item</h2></div><button type="button" class="icon-close" id="closeDialog" aria-label="Tutup">×</button></div>
+      <div id="editorFields"></div>
+      <div class="dialog-actions"><button type="button" class="button button-light" id="cancelDialog">Batal</button><button type="submit" class="button button-dark">Simpan perubahan</button></div>
+      <p class="form-message" id="editorMessage"></p>
+    </form>
+  </dialog>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
